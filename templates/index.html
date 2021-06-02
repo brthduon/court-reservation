@@ -68,7 +68,16 @@
         <th>Delete</th>
       </tr>
 <!-- Iterating through the rows -->
-      
+      <tr v-for="row in table_rows">
+        <td>{{row.reservation_date}}</td>
+        <td>{{row.reservation_time}}</td>
+        <td>{{row.reservation_location}}</td>
+        <td>{{row.reservation_court_number}}</td>
+        <td><button @click="edit_reservation(row._idx)" class="button is-warning">
+          <i class="fa fa-pencil"></i></button></td>
+        <td><button @click="delete_reservation(row._idx)" class="button is-danger">
+          <i class="fa fa-trash"></i></button></td>
+      </tr>
     </table>
   </section>
 </div>
