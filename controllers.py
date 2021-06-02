@@ -33,10 +33,35 @@ from .models import get_user_email
 
 url_signer = URLSigner(session)
 
+
+# Index Page
 @action('index')
 @action.uses(db, auth, 'index.html')
 def index():
     return dict(
         # COMPLETE: return here any signed URLs you need.
         my_callback_url = URL('my_callback', signer=url_signer),
+        load_reservation_table_url = URL('load_reservation_table', signer=url_signer),
+        delete_reservation_url = URL('delete_reservation', signer=url_signer),
     )
+
+
+# Add Reservation Page
+@action('addReservationPage')
+@action.uses(db, session, auth.user, 'addReservationPage.html')
+def addReservationPage():
+    return dict(
+        my_callback_url = URL('my_callback', signer=url_signer),
+    )
+
+# connecting to Reservation Page
+
+
+# (2) Making the database return a list here to pass through to table in html
+@action('load_reservation_table')
+@action.uses(url_signer.verify(), db)
+def load_reservation_table():
+    rows = db(db.reservations).select().as_list()
+    return dict(table_rows=rows)
+
+

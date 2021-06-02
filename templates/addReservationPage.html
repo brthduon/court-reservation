@@ -1,0 +1,192 @@
+[[extend 'layout.html']]
+
+<style>
+[v-cloak] {
+     display: none;
+}
+</style>
+
+
+<div class="section" id="vue-target" v-cloak>
+
+<!--Empty Space After Buttons -->
+    <div class="columns">
+      <div class="column is-full"></div>
+    </div>
+
+
+
+<!--    Table Begins                   -->
+    <div class="container block">
+      <body>
+        <h1 class="title" style="text-align:center">Reservation Form:</h1>
+    </body>
+
+<!--Empty Space After Buttons -->
+    <div class="columns">
+        <div class="column is-full"></div>
+    </div>
+
+<!-- Reservation Date -->
+    <div class="field">
+        <div class="columns">
+            <div class="column is-one-fifths">
+                <label class="label">Reservation Date:</label>
+            </div>
+            <div class="column is-four-fifths">
+                <div class="select is-normal">
+                    <select>
+                        <option>Select a Date</option>
+                        <option>Sunday</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Empty Space After Buttons -->
+    <div class="columns">
+        <div class="column is-full"></div>
+    </div>
+
+<!-- Reservation Time -->
+    <div class="field">
+        <div class="columns">
+            <div class="column is-one-fifths">
+                <label class="label">Reservation Time:</label>
+            </div>
+            <div class="column is-four-fifths">
+                <div class="select is-normal">
+                    <select>
+                        <option>Select a Time</option>
+                        <option>6pm - 8pm</option>
+                        <option>7pm - 9pm</option>
+                        <option>8pm - 10pm</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--Empty Space After Buttons -->
+    <div class="columns">
+        <div class="column is-full"></div>
+    </div>
+
+
+<!-- Reservation Location -->
+    <div class="field">
+        <div class="columns">
+            <div class="column is-one-fifths">
+                <label class="label">Bintang Location:</label>
+            </div>
+            <div class="column is-four-fifths">
+                <div class="select is-normal">
+                    <select>
+                        <option>Select a Location</option>
+                        <option>Sunnyvale</option>
+                        <option>Campbell</option>
+                        <option>Dublin</option>
+                        <option>South San Francisco</option>
+                        <option>Milpitas</option>
+                        <option>San Carlos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Empty Space After Buttons -->
+    <div class="columns">
+        <div class="column is-full"></div>
+    </div>
+
+
+<!-- Reservation Court -->
+    <div class="field">
+        <div class="columns">
+            <div class="column is-one-fifths">
+                <label class="label">Specific Court:</label>
+            </div>
+            <div class="column is-four-fifths">
+                <div class="select is-normal">
+                    <select>
+                        <option>Select a Court</option>
+                        <option>Court 1</option>
+                        <option>Court 2</option>
+                        <option>Court 3</option>
+                        <option>Court 4</option>
+                        <option>Court 5</option>
+                        <option>Court 6</option>
+                    </select>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="columns">
+        <div class="column is-half">
+            <div class="buttons">
+                <button class="button is-text">Need Help with Court Positioning?</button>
+            </div>
+        </div>
+        <div class="column">
+            <div class="buttons is-right">
+                <button class="button is-success">Submit</button>
+                <button class="button is-warning">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+<!-- Pop-up for the Court Layouts -->
+    <div v-if="sunnyvale_layout" class="container block">
+        <div class="title">Sunnyvale Layout</div>
+    </div>
+
+    <div v-if="campbell_layout" class="container block">
+        <div class="title">Campbell Layout</div>
+    </div>
+
+    <div v-if="dublin_layout" class="container block">
+        <div class="title">Dublin Layout</div>
+    </div>
+
+    <div v-if="ssf_layout" class="container block">
+        <div class="title">South San Francisco Layout</div>
+    </div>
+
+    <div v-if="milpitas_layout" class="container block">
+        <div class="title">Milpitas Layout</div>
+    </div>
+
+    <div v-if="san_carlos_layout" class="container block">
+        <div class="title">San Carlos Layout</div>
+    </div>
+
+
+
+</div>
+
+
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+
+<!--Call back to the server using these links-->
+<script>
+  let my_callback_url = "[[=XML(my_callback_url)]]";
+</script>
+<script src="js/index.js"></script>
+[[end]]
