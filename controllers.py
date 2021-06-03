@@ -46,6 +46,14 @@ def index():
     )
 
 
+# (2) Making the database return a list here to pass through to table in html
+@action('load_reservation_table')
+@action.uses(url_signer.verify(), db)
+def load_reservation_table():
+    table_rows = db(db.reservations).select().as_list()
+    return dict(table_rows=table_rows)
+
+
 # Add Reservation Page
 @action('addReservationPage')
 @action.uses(db, session, auth.user, 'addReservationPage.html')
@@ -54,14 +62,14 @@ def addReservationPage():
         my_callback_url = URL('my_callback', signer=url_signer),
     )
 
-# connecting to Reservation Page
+
+# Cancel Reservation Button
+@action('cancel_reservation_button')
+@action.uses(db, session, auth.user)
+def cancel_reservation_button():
+    redirect(URL('index'))
+    return dict()
 
 
-# (2) Making the database return a list here to pass through to table in html
-@action('load_reservation_table')
-@action.uses(url_signer.verify(), db)
-def load_reservation_table():
-    rows = db(db.reservations).select().as_list()
-    return dict(table_rows=rows)
 
 

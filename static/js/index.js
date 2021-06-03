@@ -50,10 +50,9 @@ let init = (app) => {
         // Put here any initialization code.
         // Typically this is a server GET call to load the data.
 
-        axios.get(load_reservations_url).then(function(response) {              // axios library allows communication with the server (1)
+        axios.get(load_reservation_table_url).then(function(response) {              // axios library allows communication with the server (1)
             app.vue.table_rows = app.enumerate(response.data.table_rows);       // fetches a row from database and puts a number on it
-
-        })
+        });
 
 
     };
