@@ -8,7 +8,7 @@
 
 
 <div class="section" id="vue-target" v-cloak>
-  <section>
+    <section>
   <div class="title" style="font-size:45px;font-weight:bold">Court Reservation System</div>
 
 <!--    Empty Space Under Title       -->
@@ -36,39 +36,28 @@
     </div>
   </section>
 
-</div>
 
-
-
-<!--Empty Space After Buttons-->
+    <!--Empty Space After Buttons-->
     <div class="columns">
       <div class="column is-full">
       </div>
     </div>
 
 
-
-<!--    Table Begins                   -->
-
-<div class="container block">
+    <div class="container block">
   <body>
     <h1 class="title" style="text-align:center">Your Reservations</h1>
   </body>
-
-
-  <section>
     <table class="table is-bordered is-striped is-fullwidth is-hoverable">
       <tr>
-<!-- Column Names to be displayed -->
-        <th>Date</th>
+         <th>Date</th>
         <th>Time</th>
         <th>Location</th>
         <th>Court</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
-<!-- Iterating through the rows -->
-      <tr v-for="row in table_rows">
+      <tr v-for="r in table_rows">
         <td>{{row.reservation_date}}</td>
         <td>{{row.reservation_time}}</td>
         <td>{{row.reservation_location}}</td>
@@ -79,18 +68,21 @@
           <i class="fa fa-trash"></i></button></td>
       </tr>
     </table>
-  </section>
+  </div>
+
+
 </div>
 
 
 [[block page_scripts]]
 <!-- Loads the index-specific js for Vue -->
 
-<!--Call back to the server using these links-->
 <script>
-  let my_callback_url = "[[=XML(my_callback_url)]]";
-  let load_reservation_table_url = "[[=XML(load_reservation_table_url)]]";
-  let delete_reservation_url = "[[=XML(delete_reservation_url)]]";
+    let my_callback_url = "[[=XML(my_callback_url)]]";
+    let load_reservation_table_url = "[[=XML(load_reservation_table_url)]]";
+    let add_new_post_url = "[[=XML(add_new_post_url)]]";
+    let delete_post_url = "[[=XML(delete_post_url)]]";
+
 </script>
 <script src="js/index.js"></script>
 [[end]]

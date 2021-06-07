@@ -34,7 +34,6 @@ from .models import get_user_email
 url_signer = URLSigner(session)
 
 
-# Index Page
 @action('index')
 @action.uses(db, auth, 'index.html')
 def index():
@@ -42,7 +41,9 @@ def index():
         # COMPLETE: return here any signed URLs you need.
         my_callback_url = URL('my_callback', signer=url_signer),
         load_reservation_table_url = URL('load_reservation_table', signer=url_signer),
-        delete_reservation_url = URL('delete_reservation', signer=url_signer),
+        add_new_post_url = URL('add_new_post', signer=url_signer),
+        delete_post_url = URL('delete_post', signer=url_signer),
+        user_email = get_user_email(),
     )
 
 
@@ -63,13 +64,32 @@ def addReservationPage():
     )
 
 
+@action('add_new_post', method="POST")
+@action.uses(url_signer.verify(), db)
+def add_new_post():
+    id = db.post.insert(
+        # post_data here refers to index.js : 41
+        post_data=request.json.get('post_data'),
+        user_email=request.json.get('user_email'),
+    )
+    return dict(id=id)
+
+
+# @action('delete_post')
+# @action.uses(url_signer.verify(), db)
+# def delete_post():
+#     id = request.params.get('id')
+#     assert id is not None
+#     db(db.post.id == id).delete()
+#     return "ok"
+
+
 # Cancel Reservation Button
 @action('cancel_reservation_button')
 @action.uses(db, session, auth.user)
 def cancel_reservation_button():
     redirect(URL('index'))
     return dict()
-
 
 
 

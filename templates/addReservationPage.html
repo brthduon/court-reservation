@@ -17,7 +17,7 @@
 
 
 <!--    Table Begins                   -->
-    <div class="container block">
+<div class="container block">
       <body>
         <h1 class="title" style="text-align:center">Reservation Form:</h1>
     </body>
@@ -31,22 +31,14 @@
     <div class="field">
         <div class="columns">
             <div class="column is-one-fifths">
-                <label class="label">Reservation Date:</label>
+                <label class="label">Which Day Would You Like to Reserve:</label>
             </div>
-            <div class="column is-four-fifths">
-                <div class="select is-normal">
-                    <select>
-                        <option>Select a Date</option>
-                        <option>Sunday</option>
-                        <option>Monday</option>
-                        <option>Tuesday</option>
-                        <option>Wednesday</option>
-                        <option>Thursday</option>
-                        <option>Friday</option>
-                        <option>Saturday</option>
-                    </select>
+            <div class="column is-one-fifth">
+                <div class="control">
+                    <input type="text" v-model="adding_reservation_day" class="input">
                 </div>
             </div>
+            <div class="column is-three-fifths"></div>
         </div>
     </div>
 
@@ -66,7 +58,6 @@
                     <select>
                         <option>Select a Time</option>
                         <option>6pm - 8pm</option>
-                        <option>7pm - 9pm</option>
                         <option>8pm - 10pm</option>
                     </select>
                 </div>
@@ -113,24 +104,17 @@
     <div class="field">
         <div class="columns">
             <div class="column is-one-fifths">
-                <label class="label">Specific Court:</label>
+                <label class="label">Court Number:</label>
             </div>
-            <div class="column is-four-fifths">
-                <div class="select is-normal">
-                    <select>
-                        <option>Select a Court</option>
-                        <option>Court 1</option>
-                        <option>Court 2</option>
-                        <option>Court 3</option>
-                        <option>Court 4</option>
-                        <option>Court 5</option>
-                        <option>Court 6</option>
-                    </select>
-                  </div>
-              </div>
-          </div>
-      </div>
+            <div class="column is-one-fifth">
+                <div class="control">
+                    <input type="text" v-model="adding_court_num" class="input">
+                </div>
+            </div>
+            <div class="column is-three-fifths"></div>
+        </div>
     </div>
+</div>
 
     <div class="columns">
         <div class="column is-half">
@@ -140,42 +124,13 @@
         </div>
         <div class="column">
             <div class="buttons is-right">
-                <a class="button is-success">Submit</a>
-                <a class="button is-warning" href="[[=URL('cancel_reservation_button')]]">Cancel</a>
+                <div class="control">
+                    <input type="submit" @click="submit_new_reservation" value="Submit" class="button is-success">
+                    <a class="button is-warning" href="[[=URL('cancel_reservation_button')]]">Cancel</a>
+                </div>
             </div>
-
         </div>
     </div>
-
-
-
-
-<!-- Pop-up for the Court Layouts -->
-    <div v-if="sunnyvale_layout" class="container block">
-        <div class="title">Sunnyvale Layout</div>
-    </div>
-
-    <div v-if="campbell_layout" class="container block">
-        <div class="title">Campbell Layout</div>
-    </div>
-
-    <div v-if="dublin_layout" class="container block">
-        <div class="title">Dublin Layout</div>
-    </div>
-
-    <div v-if="ssf_layout" class="container block">
-        <div class="title">South San Francisco Layout</div>
-    </div>
-
-    <div v-if="milpitas_layout" class="container block">
-        <div class="title">Milpitas Layout</div>
-    </div>
-
-    <div v-if="san_carlos_layout" class="container block">
-        <div class="title">San Carlos Layout</div>
-    </div>
-
-
 
 </div>
 
