@@ -9,35 +9,35 @@
 
 <div class="section" id="vue-target" v-cloak>
     <section>
-  <div class="title" style="font-size:45px;font-weight:bold">Court Reservation System</div>
+        <div class="title" style="font-size:45px;font-weight:bold">Court Reservation System</div>
+    </section>
+
 
 <!--    Empty Space Under Title       -->
-    <div class="columns">
-      <div class="column is-full">
-      </div>
-    </div>
+        <div class="columns">
+            <div class="column is-full"></div>
+        </div>
 <!--    End Empty Space               -->
 
-  </section>
+
 
 <!--    Buttons                         -->
-  <section>
-    <div class="columns">
-
-      <div class="column is-half">
-        <a class="button" href="[[=URL('addReservationPage')]]"><span>Add a Reservation</span></a>
-        <div class="button">Edit a Reservation</div>
-      </div>
-      <div class="column is-half">
-        <div class="buttons is-right">
-          <button class="button">Past Reservations</button>
+    <section>
+        <div class="columns">
+            <div class="column is-half">
+                <a class="button" href="[[=URL('addReservationPage')]]"><span>Add a Reservation</span></a>
+                <div class="button">Edit a Reservation</div>
+            </div>
+            <div class="column is-half">
+                <div class="buttons is-right">
+                    <button class="button">Past Reservations</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
 
-    <!--Empty Space After Buttons-->
+<!--Empty Space After Buttons-->
     <div class="columns">
       <div class="column is-full">
       </div>
@@ -45,30 +45,30 @@
 
 
     <div class="container block">
-  <body>
-    <h1 class="title" style="text-align:center">Your Reservations</h1>
-  </body>
-    <table class="table is-bordered is-striped is-fullwidth is-hoverable">
-      <tr>
-         <th>Date</th>
-        <th>Time</th>
-        <th>Location</th>
-        <th>Court</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-      <tr v-for="r in table_rows">
-        <td>{{row.reservation_date}}</td>
-        <td>{{row.reservation_time}}</td>
-        <td>{{row.reservation_location}}</td>
-        <td>{{row.reservation_court_number}}</td>
-        <td><button @click="edit_reservation(row._idx)" class="button is-warning">
-          <i class="fa fa-pencil"></i></button></td>
-        <td><button @click="delete_reservation(row._idx)" class="button is-danger">
-          <i class="fa fa-trash"></i></button></td>
-      </tr>
-    </table>
-  </div>
+        <body>
+            <h1 class="title" style="text-align:center">Your Reservations</h1>
+        </body>
+        <table class="table is-bordered is-striped is-fullwidth is-hoverable">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Court</th>
+<!--                <th>Edit</th>-->
+                <th>Delete</th>
+            </tr>
+            <tr v-for="row in table_rows">
+                <td>{{row.reservation_day}}</td>
+                <td>{{row.reservation_time}}</td>
+                <td>{{row.reservation_location}}</td>
+                <td>{{row.reservation_court_number}}</td>
+<!--                <td><button @click="edit_reservation(row._idx)" class="button is-warning">-->
+<!--                    <i class="fa fa-pencil"></i></button></td>-->
+                <td><button @click="delete_reservation(row._idx)" class="button is-danger">
+                    <i class="fa fa-trash"></i></button></td>
+            </tr>
+        </table>
+    </div>
 
 
 </div>
@@ -80,8 +80,8 @@
 <script>
     let my_callback_url = "[[=XML(my_callback_url)]]";
     let load_reservation_table_url = "[[=XML(load_reservation_table_url)]]";
-    let add_new_post_url = "[[=XML(add_new_post_url)]]";
-    let delete_post_url = "[[=XML(delete_post_url)]]";
+    let delete_reservation_url = "[[=XML(delete_reservation_url)]]";
+
 
 </script>
 <script src="js/index.js"></script>

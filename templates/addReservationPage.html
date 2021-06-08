@@ -30,15 +30,17 @@
 <!-- Reservation Date -->
     <div class="field">
         <div class="columns">
-            <div class="column is-one-fifths">
-                <label class="label">Which Day Would You Like to Reserve:</label>
+            <div class="column is-two-fifths">
+                <label class="label">Which Day Would You Like to Reserve:
+                    <span style="color:grey;font-family:'Courier New';font-size:13px"><br>i.e. Monday, Tuesday,
+                        Wednesday, etc.</span></label>
             </div>
             <div class="column is-one-fifth">
                 <div class="control">
                     <input type="text" v-model="adding_reservation_day" class="input">
                 </div>
             </div>
-            <div class="column is-three-fifths"></div>
+            <div class="column is-two-fifths"></div>
         </div>
     </div>
 
@@ -50,18 +52,17 @@
 <!-- Reservation Time -->
     <div class="field">
         <div class="columns">
-            <div class="column is-one-fifths">
-                <label class="label">Reservation Time:</label>
+            <div class="column is-two-fifths">
+                <label class="label">Reservation Time:
+                    <span style="color:grey;font-family:'Courier New';font-size:13px;"><br>Reservations will be
+                        allotted in two hour slots</span></label>
             </div>
-            <div class="column is-four-fifths">
-                <div class="select is-normal">
-                    <select>
-                        <option>Select a Time</option>
-                        <option>6pm - 8pm</option>
-                        <option>8pm - 10pm</option>
-                    </select>
+            <div class="column is-one-fifths">
+                <div class="control">
+                    <input type="text" v-model="adding_reservation_time" class="input">
                 </div>
             </div>
+            <div class="column is-two-fifths"></div>
         </div>
     </div>
 
@@ -75,22 +76,17 @@
 <!-- Reservation Location -->
     <div class="field">
         <div class="columns">
-            <div class="column is-one-fifths">
-                <label class="label">Bintang Location:</label>
+            <div class="column is-two-fifths">
+                <label class="label">Bintang Location:
+                    <span style="color:grey;font-family:'Courier New';font-size:13px;"><br>Locations include
+                        Sunnyvale and Milpitas for now.</span></label>
             </div>
-            <div class="column is-four-fifths">
-                <div class="select is-normal">
-                    <select>
-                        <option>Select a Location</option>
-                        <option>Sunnyvale</option>
-                        <option>Campbell</option>
-                        <option>Dublin</option>
-                        <option>South San Francisco</option>
-                        <option>Milpitas</option>
-                        <option>San Carlos</option>
-                    </select>
+            <div class="column is-one-fifths">
+                <div class="control">
+                    <input type="text" v-model="adding_reservation_location" class="input">
                 </div>
             </div>
+            <div class="column is-two-fifths"></div>
         </div>
     </div>
 
@@ -103,15 +99,15 @@
 <!-- Reservation Court -->
     <div class="field">
         <div class="columns">
-            <div class="column is-one-fifths">
+            <div class="column is-two-fifths">
                 <label class="label">Court Number:</label>
             </div>
             <div class="column is-one-fifth">
                 <div class="control">
-                    <input type="text" v-model="adding_court_num" class="input">
+                    <input type="text" v-model="adding_reservation_court_number" class="input">
                 </div>
             </div>
-            <div class="column is-three-fifths"></div>
+            <div class="column is-two-fifths"></div>
         </div>
     </div>
 </div>
@@ -125,8 +121,8 @@
         <div class="column">
             <div class="buttons is-right">
                 <div class="control">
-                    <input type="submit" @click="submit_new_reservation" value="Submit" class="button is-success">
-                    <a class="button is-warning" href="[[=URL('cancel_reservation_button')]]">Cancel</a>
+                    <input type="submit" @click="add_new_reservation" value="Submit" class="button is-success">
+                    <a class="button is-warning" href="[[=URL('redirect_home')]]">Cancel</a>
                 </div>
             </div>
         </div>
@@ -142,6 +138,8 @@
 <!--Call back to the server using these links-->
 <script>
   let my_callback_url = "[[=XML(my_callback_url)]]";
+  let load_reservation_table_url = "[[=XML(load_reservation_table_url)]]";
+  let add_new_reservation_url = "[[=XML(add_new_reservation_url)]]";
 </script>
 <script src="js/index.js"></script>
 [[end]]

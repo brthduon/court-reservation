@@ -22,10 +22,11 @@ def get_time():
 # always commit your models to avoid problems later
 
 db.define_table('reservations',
-                Field('reservation_date',),
-                Field('reservation_time'),
+                Field('reservation_day', 'text', requires=IS_NOT_EMPTY()),
+                Field('reservation_time', 'integer'),
                 Field('reservation_location'),
-                Field('reservation_court_number'),
+                Field('reservation_court_number', 'integer',
+                      requires=IS_NOT_EMPTY(error_message='must be a court number')),
                 Field('verification', default=get_user_email),
                 )
 
